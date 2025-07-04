@@ -1,0 +1,229 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "PACK-MAN", sans-serif;
+    overflow-y: hidden;
+}
+/* -------------------------              GAME AREA          --------------------- */
+.game-area{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background-image: url("images/logo.jpg");
+    background-size: cover;
+    background-position-y: 20%;
+    background-position-x: center;
+}
+
+.game-area::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.game-area .overlay{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.scoreboard{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-width: 900px;
+    padding-left: 1rem;
+    /* padding-right: 1rem; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+.score{
+    padding: 0 1rem;
+}
+.lives{
+    font-size: 2.5rem;
+    padding: 0 1.5rem;
+}
+.heart{
+    margin: 0;
+}
+
+.game-container{
+    position: relative;
+    flex-grow: 1;
+    width: 100%;
+    max-width: 900px;
+    border: 2px dashed #df3535;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.popUp{
+    position: absolute;
+    height: 7rem;
+    width: 7rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    animation: fade-in 0.3s ease;
+}
+
+.popUp img{
+    height: 6.5rem;
+    width: 6.5rem;
+    border-radius: 1rem 1rem 0 0 ;
+}
+@keyframes fade-in {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+/* --------------------------        GAME OVER SCREEN            -------------------------------- */
+.game-over{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #df3535;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    
+}
+.game-over-title{
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+    font-size: 6rem;
+    animation: shake 0.5s infinite alternate;  
+    margin: 0;
+}
+@keyframes shake{
+    from{transform: rotate(-3deg);}
+    to{transform: rotate(3deg);}
+}
+
+.final-score{
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    font-size: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.trust-line{
+    font-size: 3rem;
+    margin: 0rem;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.score-share input{
+    padding: .5rem;
+    border-radius: .5rem;
+    border: none;
+    /* margin-right: .5rem; */
+    margin: .5rem 0 .5rem 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+.score-share button{
+    padding: .5rem, 1rem;
+    height: 2.2rem;
+    width: 4rem;
+    font-size: 1rem;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+}
+.leaderboard{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.leaderboard h3{
+    font-size: 2.5rem;
+    margin: 0;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.leaderboard ol{
+    padding-left: 1.2rem;
+    overflow-y: auto;
+    color: white;
+    text-align: left;
+    font-size: 1.5rem;
+}
+.leaderboard li{
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+.restart-btn{
+    padding: .5rem, 1rem;
+    height: 2.2rem;
+    width: 7rem;
+    font-size: 1.1rem;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+}
+.restart-btn:hover, .user-btn:hover{
+    transform: scale(1.08);
+    transition: transform .4s ease-in ;
+}
+
+@media (max-width: 550px){
+    #start-screen{
+        background-position-x: 40%;
+    }
+    
+    .lives{
+        font-size: 1.5rem;
+        padding: 0;
+    }
+    .scoreboard{
+        padding-left: 0;
+        padding: 0 ;
+    }
+    .score{
+        font-size: 2.5rem;
+        padding: 0px;
+    }
+    .game-container{
+        border: none;
+        border-radius: 0px;
+    }
+    .trust-line{
+        display: none;
+    }
+}
